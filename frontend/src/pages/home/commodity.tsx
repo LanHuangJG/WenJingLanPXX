@@ -1,4 +1,4 @@
-import {Avatar, Card, Col, Flex, Layout, Pagination, Row} from "antd";
+import {Avatar, Card, Col, Flex, Layout, Row} from "antd";
 import Search from "antd/es/input/Search";
 import {SearchProps} from "antd/lib/input";
 import {EditOutlined, EllipsisOutlined, SearchOutlined, SettingOutlined} from "@ant-design/icons";
@@ -10,7 +10,7 @@ export default function Commodity() {
 
 
     const {Meta} = Card;
-    const items: number[] = Array(51).fill(0);
+    const items: number[] = Array(100).fill(0);
 
     return (
         <Layout className={"h-full"}>
@@ -27,7 +27,7 @@ export default function Commodity() {
             <Row className={"h-full overflow-y-auto"}>
                 {
                     items.map((_, index) => (
-                        <Col key={index} span={3}>
+                        <Col key={index} span={6}>
                             <Flex justify={"center"} align={"center"} className={"m-2"}>
                                 <Card
                                     style={{width: 300}}
@@ -55,14 +55,6 @@ export default function Commodity() {
                     ))
                 }
             </Row>
-            <Flex justify={"center"} vertical={false} className={"my-4"}>
-                <Pagination
-                    total={85}
-                    showTotal={(total) => `共 ${total} 个商品`}
-                    defaultPageSize={20}
-                    defaultCurrent={1}
-                />
-            </Flex>
         </Layout>
     )
 }

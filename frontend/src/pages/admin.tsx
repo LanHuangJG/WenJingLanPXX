@@ -23,7 +23,7 @@ export default function Admin() {
         {
             key: '1',
             icon: <HomeOutlined/>,
-            label: "首页",
+            label: "返回首页",
             onClick: () => {
                 navigate('/')
             }
@@ -34,7 +34,9 @@ export default function Admin() {
             label: "退出登录",
             danger: true,
             onClick: () => {
-                navigate('/admin')
+                navigate('/login',{
+                    replace: true
+                })
             }
         },
     ];

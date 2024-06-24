@@ -1,4 +1,4 @@
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import {Avatar, Dropdown, Flex, Image, Layout, MenuProps} from "antd";
 import {Content, Header} from "antd/es/layout/layout";
 import {
@@ -10,6 +10,9 @@ import {
 } from "@ant-design/icons";
 
 export default function Home() {
+
+    const navigate = useNavigate();
+
     const items: MenuProps['items'] = [
         {
             key: '1',
@@ -41,21 +44,21 @@ export default function Home() {
         {
             key: '4',
             icon: <ExperimentOutlined/>,
-            label: (
-                <a href="/admin/dashboard">
-                    系统管理
-                </a>
-            ),
+            label: "系统管理",
+            onClick: () => {
+                navigate('/admin/dashboard')
+            }
         },
         {
             key: '5',
             icon: <LogoutOutlined/>,
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-                    退出登录
-                </a>
-            ),
+            label: "退出登录",
             danger: true,
+            onClick: () => {
+                navigate('/login',{
+                    replace:true
+                })
+            }
         },
     ];
 

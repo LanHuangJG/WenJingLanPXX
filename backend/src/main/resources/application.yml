@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/pxx
+    username: root
+    password: 20031002a
+  security:
+    user:
+      password: 123456
+dromara:
+  x-file-storage:
+    default-platform: local-plus-1
+    thumbnail-suffix: ".min.jpg"
+    local-plus:
+      - platform: local-plus-1
+        enable-storage: true
+        enable-access: true
+        domain: http://127.0.0.1:8080/download/
+        base-path: local-plus/
+        path-patterns: /download/**
+        storage-path: D:/Temp/
