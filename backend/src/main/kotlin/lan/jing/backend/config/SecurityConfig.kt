@@ -1,5 +1,6 @@
 package lan.jing.backend.config
 
+import lan.jing.backend.filter.JwtFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -7,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.invoke
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
 @EnableWebSecurity
@@ -16,10 +18,12 @@ class SecurityConfig {
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http {
             authorizeHttpRequests {
-                authorize("/test/**", permitAll)
                 authorize("/auth/**", permitAll)
+                authorize("/commodity/**", permitAll)
+                authorize("/admin/**", permitAll)
                 authorize(anyRequest, authenticated)
             }
+            addFilterBefore<UsernamePasswordAuthenticationFilter>(jwtTokenFilter())
             sessionManagement {
                 sessionCreationPolicy = SessionCreationPolicy.STATELESS
             }
@@ -34,4 +38,6 @@ class SecurityConfig {
         return http.build()
     }
 
+    @Bean
+    fun jwtTokenFilter() = JwtFilter()
 }

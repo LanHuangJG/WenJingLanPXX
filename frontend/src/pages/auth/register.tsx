@@ -1,6 +1,7 @@
 import {Button, Card, Flex, Form, FormProps, Input, notification} from "antd";
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 export default function Register() {
     const [api, contextHolder] = notification.useNotification();
@@ -10,13 +11,32 @@ export default function Register() {
             replace: true
         })
     }
+
+
     type FieldType = {
         username?: string;
         password?: string;
     };
     const navigate = useNavigate()
     const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-        console.log(values)
+        axios.post("/api/auth/register", {
+            username: values.username,
+            password: values.password
+        }).then(
+            res => {
+                if (res.data.code === "200") {
+                    api.success({
+                        message: "注册成功",
+                        description: "注册成功,请登录"
+                    })
+                } else {
+                    api.error({
+                        message: "注册失败",
+                        description: res.data.message
+                    })
+                }
+            }
+        )
     };
 
     const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {

@@ -37,7 +37,7 @@ export default function Dashboard() {
                     />
                     <StatisticCard
                         statistic={{
-                            title: '访客数',
+                            title: '订单数',
                             value: 475,
                             icon: (
                                 <img
@@ -78,7 +78,7 @@ export default function Dashboard() {
 
                 <ProCard
                     title="数据概览"
-                    extra="2019年9月28日 星期五"
+                    extra="2024年6月28日 星期五"
                     split={responsive ? 'horizontal' : 'vertical'}
                     headerBordered
                     bordered
@@ -88,11 +88,11 @@ export default function Dashboard() {
                             <ProCard split="vertical">
                                 <StatisticCard
                                     statistic={{
-                                        title: '昨日全部流量',
+                                        title: '昨日全部订单数',
                                         value: 234,
                                         description: (
                                             <Statistic
-                                                title="较本月平均流量"
+                                                title="较本月平均订单数"
                                                 value="8.04%"
                                                 trend="down"
                                             />
@@ -101,7 +101,7 @@ export default function Dashboard() {
                                 />
                                 <StatisticCard
                                     statistic={{
-                                        title: '本月累计流量',
+                                        title: '本月累计订单数',
                                         value: 234,
                                         description: (
                                             <Statistic title="月同比" value="8.04%" trend="up"/>
@@ -112,14 +112,14 @@ export default function Dashboard() {
                             <ProCard split="vertical">
                                 <StatisticCard
                                     statistic={{
-                                        title: '运行中实验',
+                                        title: '进行中订单',
                                         value: '12/56',
                                         suffix: '个',
                                     }}
                                 />
                                 <StatisticCard
                                     statistic={{
-                                        title: '历史实验总数',
+                                        title: '订单总数',
                                         value: '134',
                                         suffix: '个',
                                     }}
@@ -127,7 +127,7 @@ export default function Dashboard() {
                             </ProCard>
                         </ProCard>
                         <StatisticCard
-                            title="流量走势"
+                            title="订单数走势"
                             chart={
                                 <img
                                     src="https://gw.alipayobjects.com/zos/alicdn/_dZIob2NB/zhuzhuangtu.svg"
@@ -137,7 +137,7 @@ export default function Dashboard() {
                         />
                     </ProCard>
                     <StatisticCard
-                        title="流量占用情况"
+                        title="订单占用情况"
                         chart={
                             <img
                                 src="https://gw.alipayobjects.com/zos/alicdn/qoYmFMxWY/jieping2021-03-29%252520xiawu4.32.34.png"

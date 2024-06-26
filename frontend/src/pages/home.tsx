@@ -8,11 +8,17 @@ import {
     LogoutOutlined,
     ShoppingCartOutlined
 } from "@ant-design/icons";
+import {useEffect} from "react";
 
 export default function Home() {
 
     const navigate = useNavigate();
-
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if (!token) navigate('/login', {
+            replace: true
+        })
+    }, [navigate])
     const items: MenuProps['items'] = [
         {
             key: '1',
@@ -26,11 +32,10 @@ export default function Home() {
         {
             key: '2',
             icon: <FileTextOutlined/>,
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-                    我的订单
-                </a>
-            ),
+            label: "我的订单",
+            onClick: () => {
+                navigate('/order')
+            }
         },
         {
             key: '3',
@@ -55,8 +60,9 @@ export default function Home() {
             label: "退出登录",
             danger: true,
             onClick: () => {
-                navigate('/login',{
-                    replace:true
+                localStorage.removeItem("token")
+                navigate('/login', {
+                    replace: true
                 })
             }
         },

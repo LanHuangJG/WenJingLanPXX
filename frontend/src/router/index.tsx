@@ -8,6 +8,10 @@ import Commodity from "../pages/home/commodity.tsx";
 import Admin from "../pages/admin.tsx";
 import Dashboard from "../pages/admin/dashboard.tsx";
 import UserEdit from "../pages/admin/user/userEdit.tsx";
+import Merchandise from "../pages/admin/merchandise/merchandise.tsx";
+import Type from "../pages/admin/merchandise/type.tsx";
+import HomeOrder from "../pages/home/homeOrder.tsx";
+import Order from "../pages/admin/order/order.tsx";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +39,10 @@ const router = createBrowserRouter([
                         path: "/",
                         index: true,
                         element: <Commodity/>
+                    },
+                    {
+                        path: "/order",
+                        element: <HomeOrder/>
                     }
                 ]
             },
@@ -49,6 +57,18 @@ const router = createBrowserRouter([
                     {
                         path: "/admin/user/edit",
                         element: <UserEdit/>
+                    },
+                    {
+                        path: "/admin/merchandise",
+                        element: <Merchandise/>
+                    },
+                    {
+                        path: "/admin/merchandise/type",
+                        element: <Type/>
+                    },
+                    {
+                        path: "/admin/order",
+                        element: <Order/>
                     }
                 ]
             }

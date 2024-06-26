@@ -16,9 +16,12 @@ import {useEffect} from "react";
 export default function Admin() {
     const navigate = useNavigate();
     const location = useLocation()
-    useEffect(()=>{
-        console.log(location.pathname)
-    })
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if (!token) navigate('/login', {
+            replace: true
+        })
+    }, [navigate])
     const items: MenuProps['items'] = [
         {
             key: '1',
@@ -34,7 +37,8 @@ export default function Admin() {
             label: "退出登录",
             danger: true,
             onClick: () => {
-                navigate('/login',{
+                localStorage.removeItem("token")
+                navigate('/login', {
                     replace: true
                 })
             }
@@ -64,13 +68,6 @@ export default function Admin() {
                             replace: true
                         })
                     }
-                },
-                {
-                    key: '2',
-                    label: '用户下线',
-                    onClick: () => {
-                        navigate('/admin/dashboard')
-                    }
                 }
             ]
         },
@@ -80,12 +77,22 @@ export default function Admin() {
             label: '商品管理',
             children: [
                 {
-                    key: '3',
-                    label: '商品列表',
+                    key: '/admin/merchandise',
+                    label: '商品编辑',
+                    onClick: () => {
+                        navigate('/admin/merchandise', {
+                            replace: true
+                        })
+                    }
                 },
                 {
-                    key: '4',
-                    label: '商品添加',
+                    key: '/admin/merchandise/type',
+                    label: '种类编辑',
+                    onClick: () => {
+                        navigate('/admin/merchandise/type', {
+                            replace: true
+                        })
+                    }
                 }
             ]
         },
@@ -95,8 +102,13 @@ export default function Admin() {
             label: '订单管理',
             children: [
                 {
-                    key: '5',
+                    key: '/admin/order',
                     label: '订单列表',
+                    onClick: () => {
+                        navigate('/admin/order', {
+                            replace: true
+                        })
+                    }
                 }
             ]
         }

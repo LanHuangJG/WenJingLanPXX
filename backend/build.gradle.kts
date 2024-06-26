@@ -3,6 +3,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.5"
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
+    id("com.mybatis-flex.kotlin") version "1.0.1"
 }
 
 group = "lan.jing"
@@ -19,6 +20,7 @@ repositories {
 }
 
 dependencies {
+    implementation ("com.auth0:java-jwt:4.4.0")
     implementation("org.dromara.x-file-storage:x-file-storage-spring:2.1.0")
     implementation("com.mybatis-flex:mybatis-flex-kotlin-extensions:1.0.9")
     implementation("com.mybatis-flex:mybatis-flex-spring-boot3-starter:1.9.3")

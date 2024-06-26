@@ -23,6 +23,7 @@ export default function Login() {
         }).then(
             res => {
                 if (res.data.code === "200") {
+                    localStorage.setItem("token",res.data.token)
                     navigate('/', {
                         replace: true
                     })
@@ -72,12 +73,12 @@ export default function Login() {
                                     placeholder={"请输入您的密码"}/>
                 </Form.Item>
                 <Form.Item wrapperCol={{offset: 8, span: 16}}>
-                    <Flex justify={"end"}gap={"middle"}>
+                    <Flex justify={"end"} gap={"middle"}>
                         <Button type="primary" htmlType="submit">
                             登录
                         </Button>
                         <Button type={"dashed"} onClick={() => toRegister()}>
-                            注册
+                            还没有账号?
                         </Button>
                     </Flex>
                 </Form.Item>
